@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/entities/Timestamp" xmlns:tns="http://www.example.org/entities/Timestamp"
+	elementFormDefault="qualified">
+
+	<!-- Timestamp Request Type -->
+	<xsd:element name="TimestampRequestType">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="timestampReq" type="xsd:dateTime" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- Timestamp Response Type -->
+	<xsd:element name="TimestampResponseType">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="timestampRes" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

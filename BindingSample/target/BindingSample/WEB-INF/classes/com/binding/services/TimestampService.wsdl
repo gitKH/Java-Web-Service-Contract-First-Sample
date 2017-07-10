@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	targetNamespace="http://www.example.org/services/TimestampService/"
+	xmlns:tns="http://www.example.org/services/TimestampService/"
+	xmlns:timestamp="http://www.example.org/entities/Timestamp" name="TimestampService">
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.example.org/services/TimestampService/">
+			<xsd:import namespace="http://www.example.org/entities/Timestamp"
+				schemaLocation="../entities/timestamp.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="TimestampRequest">
+	</wsdl:message>
+	<wsdl:message name="TimestampResponse">
+		<wsdl:part element="timestamp:TimestampResponseType" name="parameters" />
+	</wsdl:message>
+
+	<wsdl:portType name="ITimestampService">
+		<wsdl:operation name="setDateTimestamp">
+			<wsdl:input message="tns:TimestampRequest" />
+			<wsdl:output message="tns:TimestampResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="TimestampServiceSOAPBinding" type="tns:ITimestampService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="setDateTimestamp">
+			<soap:operation soapAction="" />
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="TimestampService">
+		<wsdl:port name="TimestampServicePort" binding="tns:TimestampServiceSOAPBinding">
+			<soap:address
+				location="http://localhost:8080/BindingSample/services/timestamp/TimestampService" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>
